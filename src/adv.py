@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+import textwrap
 
 # Declare all the rooms
 
@@ -38,6 +40,19 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+player = Player("cj", "outside")
+# for attr, value in player.__dict__.items():
+#     print(attr, value)
+wrapper = textwrap.TextWrapper(width=100)
+for key, value in room.items():
+    if key == player.room:
+
+        print(key, type(value.name))
+        desc = wrapper.wrap(text=value.name)
+        for d in desc:
+            print(d)
+
 
 # Write a loop that:
 #
