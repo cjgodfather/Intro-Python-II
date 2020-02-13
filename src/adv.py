@@ -41,19 +41,10 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-player = Player("cj", "outside")
-# for attr, value in player.__dict__.items():
-#     print(attr, value)
-wrapper = textwrap.TextWrapper(width=100)
-for key, value in room.items():
-    if key == player.room:
+player = Player(input("What is your name? "), room["outside"])
 
-        print(key, type(value.name))
-        desc = wrapper.wrap(text=value.name)
-        for d in desc:
-            print(d)
-
-
+print(f"hello, {player.name}")
+print(player.current_room)
 # Write a loop that:
 #
 # * Prints the current room name
@@ -64,3 +55,13 @@ for key, value in room.items():
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    cmd = input("->").lower()
+    if cmd in ["n", "s", "e", "w"]:
+        player.travel(cmd)
+    elif cmd == "q":
+        print("GoodBye!")
+        exit()
+    else:
+        print("I did not understand that command")
